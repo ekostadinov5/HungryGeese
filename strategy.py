@@ -1,4 +1,5 @@
 
+# DQN & DDQN
 class EpsilonGreedyStrategy:
 
     def __init__(self, start, end, decay):

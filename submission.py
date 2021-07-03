@@ -1,6 +1,6 @@
 
 from kaggle_environments import make
-from agents import Agent
+from agents import QAgent, PPOAgent
 from utils import preprocess_state, get_direction
 
 
@@ -11,7 +11,8 @@ def agent(obs_dict, config_dict):
     global prev_direction
 
     env = make('hungry_geese')
-    agent = Agent(rows=11, columns=11, num_actions=3)
+    # agent = QAgent(rows=11, columns=11, num_actions=3)
+    agent = PPOAgent(rows=11, columns=11, num_actions=3)
     model_name = ''
     agent.load_model_weights('models/' + model_name + '.h5')
 

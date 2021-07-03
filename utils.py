@@ -75,19 +75,13 @@ def calculate_reward(prev_obs_dict, obs_dict):
     index = obs_dict['index']
     goose = obs_dict['geese'][index]
     if not goose:
-        return -500
-
-    enemy_geese = obs_dict['geese'][:]
-    del enemy_geese[index]
-    alive_enemy_geese = [enemy_goose for enemy_goose in enemy_geese if enemy_goose]
-    if not alive_enemy_geese:
-        return 500
+        return -70
 
     prev_goose = prev_obs_dict['geese'][index]
     if len(goose) > len(prev_goose):
-        return 100
+        return 10
 
-    return 0
+    return 1
 
 
 def get_direction(prev_direction, action):

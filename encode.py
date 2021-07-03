@@ -4,7 +4,7 @@ import io
 import base64
 import numpy as np
 from kaggle_environments import make
-from agents import Agent
+from agents import QAgent, PPOAgent
 
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
@@ -12,9 +12,11 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 if __name__ == '__main__':
     env = make('hungry_geese')
-    agent = Agent(rows=11, columns=11, num_actions=3)
-    model_name = ''
-    agent.load_model_weights('models/' + model_name + '.h5')
+    agent = QAgent(rows=11, columns=11, num_actions=3)
+    # agent = PPOAgent(rows=11, columns=11, num_actions=3)
+    # TODO: Enter / Change model name
+    full_model_name = ''
+    agent.load_model_weights('models/' + full_model_name + '.h5')
 
     weights = agent.get_model().get_weights()
     # print(weights)
